@@ -1,0 +1,6 @@
+comment = 'seller_ext:  Created by pgrx'
+default_version = '0.0.0'
+module_pathname = '$libdir/seller_ext'
+relocatable = false
+superuser = true
+trusted = false

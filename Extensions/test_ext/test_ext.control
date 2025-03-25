@@ -1,0 +1,6 @@
+comment = 'test_ext:  Created by pgrx'
+default_version = '@CARGO_VERSION@'
+module_pathname = '$libdir/test_ext'
+relocatable = false
+superuser = true
+trusted = false

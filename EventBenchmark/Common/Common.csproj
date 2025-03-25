@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="YCSB\" />
+    <None Remove="Configuration\" />
+    <None Remove="Streaming\" />
+    <None Remove="Workload\YCSB\" />
+    <None Remove="Scenario\Customer\" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Scenario\Seller\" />
+    <None Remove="Infra\" />
+    <None Remove="Entity\CartStatus.config" />
+    <None Remove="Entities\" />
+    <None Remove="Http\" />
+    <None Remove="Workload\Metrics\" />
+    <None Remove="Workload\Delivery\" />
+    <None Remove="Services\" />
+    <None Remove="Workers\" />
+    <None Remove="Workers\Seller\" />
+    <None Remove="Workers\Customer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Streaming\" />
+    <Folder Include="Workload\Seller\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Workload\Metrics\" />
+    <Folder Include="Workload\Delivery\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	<PackageReference Include="Dapper" Version="2.1.4" />
+    <PackageReference Include="Bogus" Version="34.0.2" />
+    <PackageReference Include="DuckDB.NET.Data.Full" Version="0.8.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
+    <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+  </ItemGroup>
+</Project>

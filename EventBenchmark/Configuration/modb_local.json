@@ -1,0 +1,108 @@
+﻿{
+    "connectionString": "Data Source=file.db",
+    "numCustomers": 100000,
+    "numProdPerSeller": 10,
+    "qtyPerProduct": 10000,
+    "executionTime": 10000,
+    "epoch": 0,
+    "concurrencyLevel": 1,
+    "concurrencyType": "CONTINUOUS",
+    "pollingRate": 250,
+    "pollingUrl": "http://localhost:8091",
+    "delayBetweenRequests": 0,
+    "delayBetweenRuns": 0,
+    "transactionDistribution": {
+        "PRICE_UPDATE": 10,
+        "UPDATE_PRODUCT": 20,
+        "QUERY_DASHBOARD": 30,
+        "CUSTOMER_SESSION": 100
+    },
+    "ingestionConfig": {
+        "strategy": "WORKER_PER_CPU",
+        "concurrencyLevel": 4,
+        "mapTableToUrl": {
+            //"sellers": "http://localhost:8001/seller",
+            //"customers": "http://localhost:8001/customer",
+            "stock_items": "http://localhost:8082/stock",
+            "products": "http://localhost:8081/product"
+        }
+    },
+    "runs": [
+        {
+            "numProducts": 10000,
+            "sellerDistribution": "UNIFORM",
+            "keyDistribution": "UNIFORM"
+            //"sellerDistribution": "ZIPFIAN",
+            //"sellerZipfian": 0.2,
+            //"keyDistribution": "ZIPFIAN",
+            //"productZipfian": 0.2
+        }
+    ],
+    "postRunTasks": [ ],
+    "postExperimentTasks": [
+        {
+            "name": "cart",
+            "url": "http://localhost:8080/cart/reset"
+        },
+        {
+            "name": "product",
+            "url": "http://localhost:8081/product/reset"
+        },
+        {
+            "name": "stock",
+            "url": "http://localhost:8082/stock/reset"
+        },
+        {
+            "name": "order",
+            "url": "http://localhost:8083/order/reset"
+        },
+        {
+            "name": "payment",
+            "url": "http://localhost:8084/payment/reset"
+        },
+        {
+            "name": "shipment",
+            "url": "http://localhost:8085/shipment/reset"
+        },
+        {
+            "name": "seller",
+            "url": "http://localhost:8087/seller/reset"
+        }
+    ],
+    "customerWorkerConfig": {
+        "minMaxNumItemsRange": {
+            "min": 1,
+            "max": 10
+        },
+        "minMaxQtyRange": {
+            "min": 1,
+            "max": 10
+        },
+        "delayBetweenRequestsRange": {
+            "min": 1,
+            "max": 1000
+        },
+        "checkoutProbability": 100,
+        "voucherProbability": 0,
+        "cartUrl": "http://localhost:8080/cart",
+        "checkoutUrl": "http://localhost:8091/cart",
+        "trackTids": false,
+        "uniqueSeller": true
+    },
+    "sellerWorkerConfig": {
+        "trackUpdates": false,
+        "delayBetweenRequestsRange": {
+            "min": 1,
+            "max": 1000
+        },
+        "adjustRange": {
+            "min": 1,
+            "max": 10
+        },
+        "sellerUrl": "http://localhost:8087/seller",
+        "productUrl": "http://localhost:8091/product"
+    },
+    "deliveryWorkerConfig": {
+        "shipmentUrl": "http://localhost:8085/shipment"
+    }
+}

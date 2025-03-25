@@ -1,0 +1,6 @@
+comment = 'cart_ext:  Created by pgrx'
+default_version = '@CARGO_VERSION@'
+module_pathname = '$libdir/cart_ext'
+relocatable = false
+superuser = true
+trusted = false
